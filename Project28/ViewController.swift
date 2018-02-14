@@ -66,6 +66,8 @@ class ViewController: UIViewController {
     }
     
     // MARK: Authentication -
+    // TODO: Add #if compiler directives to make this work in the simulator
+    // TODO: Add password fallback for TouchID/FaceID
     
     @IBAction func authenticateTapped(_ sender: Any) {
         let context = LAContext()
