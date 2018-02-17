@@ -66,13 +66,16 @@ class ViewController: UIViewController {
     }
     
     // MARK: Authentication -
-    // TODO: Add #if compiler directives to make this work in the simulator
-    // TODO: Add password fallback for TouchID/FaceID
     
     @IBAction func authenticateTapped(_ sender: Any) {
         let context = LAContext()
         var error: NSError?
         
+        #if (arch(i386) || arch(x86_64))
+        self.showSimpleAlertControllerOK(alert: "Simulator Authentication", message: "No authentication needed in the simulator")
+        unlockSecretMessage()
+            
+        #else
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
             let reason = "Identify yourself!"
             
@@ -83,20 +86,43 @@ class ViewController: UIViewController {
                     } else {
                         // catch authentication errors
                         let ac = UIAlertController(title: "Authentication Failed", message: "You could not be verified; please try again.", preferredStyle: .alert)
-                        ac.addAction(UIAlertAction(title: "OK", style: .default))
+                        ac.addTextField()
+                        
+                        var passwordAlertActionTitle = "Set Password"
+                        if KeychainWrapper.standard.string(forKey: "password") != nil {
+                            passwordAlertActionTitle = "Enter Password"
+                        }
+                        
+                        let submitPassword = UIAlertAction(title: passwordAlertActionTitle, style: .default) { [unowned self, ac] (action: UIAlertAction) in
+                            
+                            let password = ac.textFields![0].text!
+                            
+                            if let keychainPassword = KeychainWrapper.standard.string(forKey: "password") {
+                                
+                                if password == keychainPassword {
+                                    self.unlockSecretMessage()
+                                } else {
+                                    self.showSimpleAlertControllerOK(alert: "Incorrect Password", message: nil)
+                                }
+                                
+                            } else {
+                                _ = KeychainWrapper.standard.set(password, forKey: "password")
+                                self.showSimpleAlertControllerOK(alert: "Password Saved!", message: "Remember this for next time.")
+                                self.unlockSecretMessage()
+                            }
+                            
+                            
+                        }
+                        ac.addAction(submitPassword)
                         self.present(ac, animated: true)
                     }
                 }
             }
         } else {
             // no biometry error
-            let ac = UIAlertController(title: "Biometry unavailable", message: "Your device is not configured for biometric authentication.", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(ac, animated: true)
+            self.showSimpleAlertControllerOK(alert: "Biometry unavailable", message: "Your device is not configured for biometric authentication.")
         }
+        #endif
     }
-
-
-
 }
 

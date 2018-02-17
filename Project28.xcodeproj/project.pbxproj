@@ -14,6 +14,7 @@
 		23D6DE672033D70800BA95A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D6DE652033D70800BA95A8 /* LaunchScreen.storyboard */; };
 		23D6DE782033DD2600BA95A8 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D6DE762033DD2600BA95A8 /* KeychainItemAccessibility.swift */; };
 		23D6DE792033DD2600BA95A8 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D6DE772033DD2600BA95A8 /* KeychainWrapper.swift */; };
+		23D6DE7B2037D76D00BA95A8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D6DE7A2037D76D00BA95A8 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		23D6DE682033D70800BA95A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23D6DE762033DD2600BA95A8 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
 		23D6DE772033DD2600BA95A8 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		23D6DE7A2037D76D00BA95A8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				23D6DE5C2033D70800BA95A8 /* AppDelegate.swift */,
 				23D6DE5E2033D70800BA95A8 /* ViewController.swift */,
+				23D6DE7A2037D76D00BA95A8 /* Extensions.swift */,
 				23D6DE602033D70800BA95A8 /* Main.storyboard */,
 				23D6DE632033D70800BA95A8 /* Assets.xcassets */,
 				23D6DE762033DD2600BA95A8 /* KeychainItemAccessibility.swift */,
@@ -145,6 +148,7 @@
 				23D6DE5F2033D70800BA95A8 /* ViewController.swift in Sources */,
 				23D6DE792033DD2600BA95A8 /* KeychainWrapper.swift in Sources */,
 				23D6DE5D2033D70800BA95A8 /* AppDelegate.swift in Sources */,
+				23D6DE7B2037D76D00BA95A8 /* Extensions.swift in Sources */,
 				23D6DE782033DD2600BA95A8 /* KeychainItemAccessibility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
